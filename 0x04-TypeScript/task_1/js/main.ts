@@ -1,36 +1,56 @@
-// Task 1: Teacher interface
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
-  location: string;
   yearsOfExperience?: number;
+  location: string;
   [key: string]: any;
 }
 
-// Task 2: Directors interface
-interface Directors extends Teacher {
+const teacher1: Teacher = {
+  firstName: "John",
+  lastName: "young",
+  fullTimeEmployee: false,
+  location: "Lagos",
+  contract: true,
+};
+
+interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Task 3: printTeacher function
+const director1: Director = {
+  firstName: "Jane",
+  lastName: "Doe",
+  fullTimeEmployee: true,
+  location: "Abuja",
+  numberOfReports: 17,
+};
+
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  ({ firstName, lastName }: { firstName: string; lastName: string }): string;
 }
 
-function printTeacher(firstName: string, lastName: string): string {
-  return firstName[0] + ". " + lastName;
-}
-
-// Task 4: StudentClass
-interface StudentClassInterface {
+function printTeacher({
+  firstName,
+  lastName,
+}: {
   firstName: string;
   lastName: string;
+}): string {
+  return `${firstName}. ${lastName}`;
+}
+
+interface StudentClassInterface {
   workOnHomework(): string;
   displayName(): string;
 }
 
-class StudentClass implements StudentClassInterface {
+interface StudentConstructor {
+  (firstName: string, lastName: string): StudentClassInterface;
+}
+
+class StudentClass {
   firstName: string;
   lastName: string;
 

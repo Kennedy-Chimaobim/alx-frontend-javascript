@@ -1,56 +1,28 @@
-// --------------------
-// 1. Teacher interface
-// --------------------
+/* Task 1: Teacher interface */
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any; // allow extra props
+  [key: string]: any; // allows extra properties like contract
 }
 
-const teacher3: Teacher = {
-  firstName: 'John',
-  lastName: 'Doe',
-  fullTimeEmployee: false,
-  location: 'London',
-  contract: false,
-};
-console.log(teacher3);
-
-// --------------------
-// 2. Director interface
-// --------------------
+/* Task 2: Directors interface */
 interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-const director1: Directors = {
-  firstName: 'Jane',
-  lastName: 'Smith',
-  location: 'New York',
-  fullTimeEmployee: true,
-  numberOfReports: 17,
-};
-console.log(director1);
-
-// --------------------
-// 3. printTeacher function
-// --------------------
-interface PrintTeacherFunction {
+/* Task 3: printTeacher function and interface */
+interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+const printTeacher: printTeacherFunction = (firstName, lastName) => {
   return `${firstName.charAt(0)}. ${lastName}`;
 };
 
-console.log(printTeacher("John", "Doe")); // J. Doe
-
-// --------------------
-// 4. StudentClass
-// --------------------
+/* Task 4: StudentClass with constructor interface and class interface */
 interface StudentClassConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
@@ -61,8 +33,8 @@ interface StudentClassInterface {
 }
 
 class StudentClass implements StudentClassInterface {
-  private firstName: string;
-  private lastName: string;
+  firstName: string;
+  lastName: string;
 
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
@@ -77,8 +49,3 @@ class StudentClass implements StudentClassInterface {
     return this.firstName;
   }
 }
-
-// Example
-const student = new StudentClass("Kenny", "Chimaobim");
-console.log(student.displayName());   // Kenny
-console.log(student.workOnHomework()); // Currently working

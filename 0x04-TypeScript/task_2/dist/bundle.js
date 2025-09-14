@@ -1,0 +1,1 @@
+(()=>{"use strict";!function(){function t(t,r){this.firstName=t,this.lastName=r}t.prototype.workOnHomework=function(){return"Currently working"},t.prototype.displayName=function(){return this.firstName}}()})();

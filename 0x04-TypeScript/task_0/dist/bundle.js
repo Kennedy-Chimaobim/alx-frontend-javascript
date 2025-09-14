@@ -1,0 +1,1 @@
+(()=>{"use strict";var e=document.createElement("table");[{firstName:"John",lastName:"Doe",age:20,location:"London"},{firstName:"Jane",lastName:"Smith",age:22,location:"Paris"}].forEach(function(t){var a=e.insertRow();a.insertCell().innerText=t.firstName,a.insertCell().innerText=t.location}),document.body.appendChild(e)})();

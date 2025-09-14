@@ -10,7 +10,6 @@ interface Teacher {
   [key: string]: any; // allow extra properties
 }
 
-// Example usage
 const teacher3: Teacher = {
   firstName: 'John',
   lastName: 'Doe',
@@ -27,7 +26,6 @@ interface Director extends Teacher {
   numberOfReports: number;
 }
 
-// Example usage
 const director1: Director = {
   firstName: 'Jane',
   lastName: 'Smith',
@@ -48,12 +46,15 @@ const printTeacher: printTeacherFunction = (firstName, lastName) => {
   return `${firstName[0]}. ${lastName}`;
 };
 
-// Example usage
 console.log(printTeacher("John", "Doe")); // J. Doe
 
 // --------------------
-// 4. StudentClass with interface
+// 4. StudentClass with separate constructor interface
 // --------------------
+interface StudentClassConstructor {
+  new (firstName: string, lastName: string): StudentClassInterface;
+}
+
 interface StudentClassInterface {
   firstName: string;
   lastName: string;

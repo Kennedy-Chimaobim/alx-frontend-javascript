@@ -1,32 +1,28 @@
-/* Task 1: Teacher interface */
+// Task 1: Teacher interface
 interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
   location: string;
   yearsOfExperience?: number;
-  [key: string]: any; // allow extra attributes
+  [key: string]: any;
 }
 
-/* Task 2: Director interface extending Teacher */
-interface Director extends Teacher {
+// Task 2: Directors interface
+interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-/* Task 3: printTeacher function and interface */
+// Task 3: printTeacher function
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
 function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName[0]}. ${lastName}`;
+  return firstName[0] + ". " + lastName;
 }
 
-/* Task 4: StudentClass interface and class */
-interface StudentClassConstructor {
-  new (firstName: string, lastName: string): StudentClassInterface;
-}
-
+// Task 4: StudentClass
 interface StudentClassInterface {
   firstName: string;
   lastName: string;
@@ -44,33 +40,10 @@ class StudentClass implements StudentClassInterface {
   }
 
   workOnHomework(): string {
-    return 'Currently working';
+    return "Currently working";
   }
 
   displayName(): string {
     return this.firstName;
   }
 }
-
-/* Example instances (optional) */
-const teacher1: Teacher = {
-  firstName: 'John',
-  lastName: 'Doe',
-  fullTimeEmployee: true,
-  location: 'London',
-  yearsOfExperience: 5,
-  contract: false
-};
-
-const director1: Director = {
-  firstName: 'Jane',
-  lastName: 'Smith',
-  fullTimeEmployee: true,
-  location: 'Paris',
-  numberOfReports: 10
-};
-
-const student1 = new StudentClass('Alice', 'Johnson');
-console.log(printTeacher('John', 'Doe')); // -> J. Doe
-console.log(student1.displayName()); // -> Alice
-console.log(student1.workOnHomework()); // -> Currently working

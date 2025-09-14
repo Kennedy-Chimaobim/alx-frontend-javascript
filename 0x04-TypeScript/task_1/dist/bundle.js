@@ -1,1 +1,1 @@
-(()=>{"use strict";var o=function(){function o(o,n){this.firstName=o,this.lastName=n}return o.prototype.workOnHomework=function(){return"Currently working"},o.prototype.displayName=function(){return this.firstName},o}(),n=new o("Alice","Johnson");console.log("".concat("John"[0],". ").concat("Doe")),console.log(n.displayName()),console.log(n.workOnHomework())})();
+(()=>{"use strict";!function(){function t(t,r){this.firstName=t,this.lastName=r}t.prototype.workOnHomework=function(){return"Currently working"},t.prototype.displayName=function(){return this.firstName}}()})();

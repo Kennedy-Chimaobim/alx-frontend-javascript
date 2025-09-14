@@ -3,46 +3,33 @@ interface Teacher {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
-  yearsOfExperience?: number;
   location: string;
-  [key: string]: any; // allows extra properties like contract
+  yearsOfExperience?: number;
+  [key: string]: any; // allow extra attributes
 }
 
-/* Task 2: Director interface (singular!) */
+/* Task 2: Director interface extending Teacher */
 interface Director extends Teacher {
   numberOfReports: number;
 }
-
-/* Example Director object */
-const director1: Director = {
-  firstName: 'John',
-  lastName: 'Doe',
-  location: 'London',
-  fullTimeEmployee: true,
-  numberOfReports: 17
-};
-
-console.log(director1);
 
 /* Task 3: printTeacher function and interface */
 interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Defined as a regular function, not arrow
 function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName.charAt(0)}. ${lastName}`;
+  return `${firstName[0]}. ${lastName}`;
 }
 
-/* Test printTeacher */
-console.log(printTeacher("John", "Doe")); // J. Doe
-
-/* Task 4: StudentClass with constructor interface and class interface */
+/* Task 4: StudentClass interface and class */
 interface StudentClassConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
 interface StudentClassInterface {
+  firstName: string;
+  lastName: string;
   workOnHomework(): string;
   displayName(): string;
 }
@@ -57,7 +44,7 @@ class StudentClass implements StudentClassInterface {
   }
 
   workOnHomework(): string {
-    return "Currently working";
+    return 'Currently working';
   }
 
   displayName(): string {
@@ -65,7 +52,25 @@ class StudentClass implements StudentClassInterface {
   }
 }
 
-/* Test StudentClass */
-const student = new StudentClass("Alice", "Smith");
-console.log(student.displayName()); // Alice
-console.log(student.workOnHomework()); // Currently working
+/* Example instances (optional) */
+const teacher1: Teacher = {
+  firstName: 'John',
+  lastName: 'Doe',
+  fullTimeEmployee: true,
+  location: 'London',
+  yearsOfExperience: 5,
+  contract: false
+};
+
+const director1: Director = {
+  firstName: 'Jane',
+  lastName: 'Smith',
+  fullTimeEmployee: true,
+  location: 'Paris',
+  numberOfReports: 10
+};
+
+const student1 = new StudentClass('Alice', 'Johnson');
+console.log(printTeacher('John', 'Doe')); // -> J. Doe
+console.log(student1.displayName()); // -> Alice
+console.log(student1.workOnHomework()); // -> Currently working

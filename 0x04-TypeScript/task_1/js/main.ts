@@ -7,7 +7,7 @@ interface Teacher {
   fullTimeEmployee: boolean;
   yearsOfExperience?: number;
   location: string;
-  [key: string]: any; // allow extra properties
+  [key: string]: any; // allow extra props
 }
 
 const teacher3: Teacher = {
@@ -22,11 +22,11 @@ console.log(teacher3);
 // --------------------
 // 2. Director interface
 // --------------------
-interface Director extends Teacher {
+interface Directors extends Teacher {
   numberOfReports: number;
 }
 
-const director1: Director = {
+const director1: Directors = {
   firstName: 'Jane',
   lastName: 'Smith',
   location: 'New York',
@@ -38,33 +38,31 @@ console.log(director1);
 // --------------------
 // 3. printTeacher function
 // --------------------
-interface printTeacherFunction {
+interface PrintTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
-  return `${firstName[0]}. ${lastName}`;
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+  return `${firstName.charAt(0)}. ${lastName}`;
 };
 
 console.log(printTeacher("John", "Doe")); // J. Doe
 
 // --------------------
-// 4. StudentClass with separate constructor interface
+// 4. StudentClass
 // --------------------
 interface StudentClassConstructor {
   new (firstName: string, lastName: string): StudentClassInterface;
 }
 
 interface StudentClassInterface {
-  firstName: string;
-  lastName: string;
   workOnHomework(): string;
   displayName(): string;
 }
 
 class StudentClass implements StudentClassInterface {
-  firstName: string;
-  lastName: string;
+  private firstName: string;
+  private lastName: string;
 
   constructor(firstName: string, lastName: string) {
     this.firstName = firstName;
@@ -80,7 +78,7 @@ class StudentClass implements StudentClassInterface {
   }
 }
 
-// Example usage
+// Example
 const student = new StudentClass("Kenny", "Chimaobim");
 console.log(student.displayName());   // Kenny
 console.log(student.workOnHomework()); // Currently working

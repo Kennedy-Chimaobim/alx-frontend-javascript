@@ -13,14 +13,28 @@ interface Directors extends Teacher {
   numberOfReports: number;
 }
 
+/* Create a Director object for testing */
+const director1: Directors = {
+  firstName: 'John',
+  lastName: 'Doe',
+  location: 'London',
+  fullTimeEmployee: true,
+  numberOfReports: 17
+};
+
+console.log(director1);
+
 /* Task 3: printTeacher function and interface */
-interface printTeacherFunction {
+interface PrintTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: printTeacherFunction = (firstName, lastName) => {
+const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
   return `${firstName.charAt(0)}. ${lastName}`;
 };
+
+/* Test printTeacher */
+console.log(printTeacher("John", "Doe")); // J. Doe
 
 /* Task 4: StudentClass with constructor interface and class interface */
 interface StudentClassConstructor {
@@ -49,3 +63,8 @@ class StudentClass implements StudentClassInterface {
     return this.firstName;
   }
 }
+
+/* Test StudentClass */
+const student = new StudentClass("Alice", "Smith");
+console.log(student.displayName()); // Alice
+console.log(student.workOnHomework()); // Currently working

@@ -8,13 +8,13 @@ interface Teacher {
   [key: string]: any; // allows extra properties like contract
 }
 
-/* Task 2: Directors interface */
-interface Directors extends Teacher {
+/* Task 2: Director interface (singular!) */
+interface Director extends Teacher {
   numberOfReports: number;
 }
 
-/* Create a Director object for testing */
-const director1: Directors = {
+/* Example Director object */
+const director1: Director = {
   firstName: 'John',
   lastName: 'Doe',
   location: 'London',
@@ -25,13 +25,14 @@ const director1: Directors = {
 console.log(director1);
 
 /* Task 3: printTeacher function and interface */
-interface PrintTeacherFunction {
+interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-const printTeacher: PrintTeacherFunction = (firstName, lastName) => {
+// Defined as a regular function, not arrow
+function printTeacher(firstName: string, lastName: string): string {
   return `${firstName.charAt(0)}. ${lastName}`;
-};
+}
 
 /* Test printTeacher */
 console.log(printTeacher("John", "Doe")); // J. Doe
